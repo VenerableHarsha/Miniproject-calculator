@@ -3,11 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/VenerableHarsha/Miniproject-calculator.git'
-            }
-        }
 
         stage('Build') {
             steps {
