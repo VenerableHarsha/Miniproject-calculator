@@ -1,5 +1,5 @@
 # Use official Java runtime
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17
 
 # Working directory inside container
 WORKDIR /app
