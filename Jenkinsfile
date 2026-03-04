@@ -15,13 +15,15 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'mvn test'
+            dir("Calculator"){sh 'mvn test'}
+
             }
         }
 
         stage('Package Application') {
             steps {
-                sh 'mvn package'
+            dir("Calculator"){sh 'mvn package'}
+
             }
         }
 

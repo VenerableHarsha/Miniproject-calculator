@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built jar from Maven target directory
-COPY target/*.jar app.jar
+COPY Calculator/target/*.jar app.jar
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
