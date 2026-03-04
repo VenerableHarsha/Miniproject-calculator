@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/calculator.git'
+                git 'https://github.com/VenerableHarsha/Miniproject-calculator.git'
             }
         }
 
