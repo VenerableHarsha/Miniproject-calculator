@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: true
+
+  tasks:
+
+    - name: Stop existing calculator container
+      docker_container:
+        name: calculator-container
+        state: absent
+
+    - name: Run calculator container
+      docker_container:
+        name: calculator-container
+        image: calculator-app
+        state: started
+        restart_policy: always
