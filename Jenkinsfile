@@ -6,7 +6,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                dir('Calculator') {
+                                    sh 'mvn clean compile'
+                                }
+
             }
         }
 
