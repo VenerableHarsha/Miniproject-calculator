@@ -1,16 +1,20 @@
----
-- hosts: localhost
-
+- hosts: deploy
   tasks:
 
-    - name: Stop existing calculator container
-      docker_container:
-        name: calculator-container
-        state: absent
+    - name: Start Ubuntu deployment container
+      command: docker run -dit --name ubuntu-deploy ubuntu:22.04
+      ignore_errors: yes
 
-    - name: Run calculator container
-      docker_container:
-        name: calculator-container
-        image: calculator-app
-        state: started
-        restart_policy: always
+    - name: Install Docker inside deployment container
+      command: >
+        docker exec ubuntu-deploy bash -c
+        "apt update && apt install -y docker.io"
+
+    - name: Pull calculator image from Docker Hub
+      command: >
+        docker exec ubuntu-deploy docker pull yourdockerhub/calculator-app:latest
+
+    - name: Run calculator container inside deployment container
+      command: >
+        docker exec ubuntu-deploy
+        docker run -dit --name calculator-container yourdockerhub/calculator-app:latest

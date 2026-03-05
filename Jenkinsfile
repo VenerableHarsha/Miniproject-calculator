@@ -33,9 +33,16 @@ pipeline {
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Docker Push') {
             steps {
-                sh 'docker run -d --name calculator-container calculator-app || true'
+                withCredentials([usernamePassword(
+                    credentialsId: 'Dockerhub creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
+                    sh 'docker push venerableharsha/calculator-app:latest'
+                }
             }
         }
 
