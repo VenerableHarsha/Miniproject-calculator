@@ -12,9 +12,9 @@
 
     - name: Pull calculator image from Docker Hub
       command: >
-        docker exec ubuntu-deploy docker pull yourdockerhub/calculator-app:latest
+        docker exec ubuntu-deploy docker pull venerableharsha/calculator-app:latest
 
     - name: Run calculator container inside deployment container
       command: >
         docker exec ubuntu-deploy
-        docker run -dit --name calculator-container yourdockerhub/calculator-app:latest
+        docker run -dit --name calculator-container venerableharsha/calculator-app:latest
