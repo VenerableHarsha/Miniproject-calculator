@@ -1,13 +1,14 @@
 - hosts: deploy
   tasks:
 
-    - name: Start Ubuntu deployment container
-      command: >
-        docker run -dit
-        --name ubuntu-deploy
-        -v /var/run/docker.sock:/var/run/docker.sock
-        ubuntu:22.04
-
+    - name: Ensure Ubuntu deployment container exists
+      community.docker.docker_container:
+        name: ubuntu-deploy
+        image: ubuntu:22.04
+        state: started
+        detach: true
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
     - name: Install Docker inside deployment container
       command: >
         docker exec ubuntu-deploy bash -c
