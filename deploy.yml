@@ -6,7 +6,8 @@
         name: ubuntu-deploy
         image: ubuntu:22.04
         state: started
-        detach: true
+        detach : true
+        command: tail -f /dev/null
         volumes:
           - /var/run/docker.sock:/var/run/docker.sock
     - name: Install Docker inside deployment container
