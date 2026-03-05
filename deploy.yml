@@ -2,8 +2,11 @@
   tasks:
 
     - name: Start Ubuntu deployment container
-      command: docker run -dit --name ubuntu-deploy ubuntu:22.04
-      ignore_errors: yes
+      command: >
+        docker run -dit
+        --name ubuntu-deploy
+        -v /var/run/docker.sock:/var/run/docker.sock
+        ubuntu:22.04
 
     - name: Install Docker inside deployment container
       command: >
