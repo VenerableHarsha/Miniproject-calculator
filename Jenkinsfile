@@ -29,7 +29,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t calculator-app .'
+                sh 'docker build -t venerableharsha/calculator-app:latest .'
             }
         }
 
