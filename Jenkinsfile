@@ -52,5 +52,19 @@ pipeline {
             }
         }
 
+        
+    }
+    post {
+        success {
+            mail to: 'your_email@gmail.com',
+            subject: "Jenkins Pipeline Successful",
+            body: "The CI/CD pipeline completed successfully."
+        }
+
+        failure {
+            mail to: 'your_email@gmail.com',
+            subject: "Jenkins Pipeline Failed",
+            body: "The CI/CD pipeline failed. Please check Jenkins."
+        }
     }
 }
